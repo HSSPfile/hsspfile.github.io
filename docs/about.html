@@ -7,7 +7,7 @@
     <title>About HSSP | HSSP documentation</title>
     <style>
         nav ul ul {color: grey;}
-        nav input:checked + ul {color: blue;}
+        nav ul ul:target {color: blue;}
     </style>
 </head>
 <body>
@@ -19,7 +19,7 @@
         <li><input type="checkbox" id="nav-encryption"><label for="nav-encryption">Encryption</label><ul>
             <li>Codes</li>
         </ul></li>
-        <li><input type="checkbox" id="nav-versions"><label for="nav-versions">Versions</label><ul>
+        <li><a href="#nav-versions">Versions</a><ul id="nav-versions">
             <li>v4</li>
             <li>v3</li>
             <li>v2</li>
