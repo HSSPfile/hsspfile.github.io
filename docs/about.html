@@ -7,19 +7,19 @@
     <title>About HSSP | HSSP documentation</title>
     <style>
         /* NAV */
-        :target > .nav-expand {display: none;}
-        :not(:target) > .nav-expand {display: block;}
-        :target > .nav-collapse {display: block;}
-        :not(:target) > .nav-collapse {display: none;}
+        :target > .nav-expand, :has(:target) > .nav-expand {display: none;}
+        :not(:target, :has(:target)) > .nav-expand {display: block;}
+        :target > .nav-collapse, :has(:target) > .nav-collapse {display: block;}
+        :not(:target, :has(:target)) > .nav-collapse {display: none;}
 
         nav a, nav a:visited, nav a:link, nav a:hover, nav:active {color: #000; text-decoration: none;}
         nav a:hover {text-decoration: underline;}
         nav a.disabled {pointer-events: none; font-style: italic;}
-        nav .expandable:target {list-style-type: disclosure-open;}
-        nav .expandable:not(:target) {list-style-type: disclosure-closed;}
+        nav .expandable:target, nav .expandable:has(:target) {list-style-type: disclosure-open;}
+        nav .expandable:not(:target, :has(:target)) {list-style-type: disclosure-closed;}
 
         nav ul ul {display: none;}
-        nav ul :target > ul {display: block;}
+        nav ul :target > ul, nav ul :has(:target) {display: block;}
     </style>
 </head>
 <body>
