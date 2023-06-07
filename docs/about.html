@@ -11,6 +11,7 @@
 
         /* HEADER */
         header {font-family: 'Noto Sans', sans-serif;}
+        header a, header a:visited, header a:link, header a:hover, header:active {color: #fff; text-decoration: none;}
         header h1 {background-color: #333; color: #fff; padding: 0.5rem; border-radius: 0.5rem; display: inline-block; margin: 0 0 1rem 0;}
 
         /* NAV */
@@ -31,6 +32,9 @@
 
         nav ul ul {display: none;}
         nav ul :target > ul, nav ul :has(:target) > ul {display: block;}
+
+        /* FOOTER */
+        footer {background-color: #ddd; width: 100%; padding: 0.5rem 0.5rem 0.25rem 0.5rem; border-top: 0.25rem solid #aaa; border-bottom: 0.25rem solid #aaa;}
     </style>
 </head>
 <body>
