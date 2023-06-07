@@ -14,9 +14,12 @@
 
         nav a, nav a:visited, nav a:link, nav a:hover, nav:active {color: #000; text-decoration: none;}
         nav a:hover {text-decoration: underline;}
+        nav a.disabled {pointer-events: none; font-style: italic;}
+        nav .expandable:target {list-style-type: disclosure-open;}
+        nav .expandable:not(:target) {list-style-type: disclosure-closed;}
 
-        nav ul ul {color: grey;}
-        nav ul :target > ul {color: blue;}
+        nav ul ul {display: none;}
+        nav ul :target > ul {display: block;}
     </style>
 </head>
 <body>
@@ -24,10 +27,14 @@
         HSSP documentation
     </h1></header>
     <nav><ul>
-        <li>About</li>
-        <li><input type="checkbox" id="nav-encryption"><label for="nav-encryption">Encryption</label><ul>
-            <li>Codes</li>
-        </ul></li>
+        <li><a href="/docs/about" class="disabled">About</a></li>
+        <li id="nav-encryption" class="expandable">
+            <a href="#nav-encryption" class="nav-expand">Encryption</a>
+            <a href="#" class="nav-collapse">Encryption</a>
+            <ul>
+                <li>Codes</li>
+            </ul>
+        </li>
         <li id="nav-versions" class="expandable">
             <a href="#nav-versions" class="nav-expand">Versions</a>
             <a href="#" class="nav-collapse">Versions</a>
