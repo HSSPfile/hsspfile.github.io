@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About HSSP | HSSP documentation</title>
     <style>
+        :target > .nav-expand {display: none;}
+        :target > .nav-collapse {display: block;}
+
         nav ul ul {color: grey;}
-        nav ul ul:target {color: blue;}
+        nav ul :target > ul {color: blue;}
     </style>
 </head>
 <body>
@@ -19,12 +22,16 @@
         <li><input type="checkbox" id="nav-encryption"><label for="nav-encryption">Encryption</label><ul>
             <li>Codes</li>
         </ul></li>
-        <li><a href="#nav-versions">Versions</a><ul id="nav-versions">
-            <li>v4</li>
-            <li>v3</li>
-            <li>v2</li>
-            <li>v1</li>
-        </ul></li>
+        <li id="nav-versions">
+            <a href="#nav-versions" class="nav-expand">Versions</a>
+            <a href="#nav-void" class="nav-collapse">Versions</a>
+            <ul>
+                <li>v4</li>
+                <li>v3</li>
+                <li>v2</li>
+                <li>v1</li>
+            </ul>
+        </li>
     </ul></nav>
 
     <main>
