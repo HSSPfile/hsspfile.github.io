@@ -1,0 +1,32 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans');
+
+/* HEADER */
+header {font-family: 'Noto Sans', sans-serif;}
+header a, header a:visited, header a:link, header a:hover, header:active {color: #fff; text-decoration: none;}
+header h1 {background-color: #333; color: #fff; padding: 0.5rem; border-radius: 0.5rem; display: inline-block; margin: 0 0 1rem 0;}
+
+/* NAV */
+nav {background-color: #ddd; width: 100%; padding: 0.5rem 0; border-top: 0.25rem solid #aaa; border-bottom: 0.25rem solid #aaa;}
+nav::before {content: 'navigation'; font-variant: small-caps; margin: 0 0 0 1.25rem; border-bottom: 0.25rem solid #aaa;}
+
+:target > .nav-expand, :has(:target) > .nav-expand {display: none;}
+:not(:target, :has(:target)) > .nav-expand {display: block;}
+:target > .nav-collapse, :has(:target) > .nav-collapse {display: block;}
+:not(:target, :has(:target)) > .nav-collapse {display: none;}
+
+nav a, nav a:visited, nav a:link, nav a:hover, nav:active {color: #000; text-decoration: none;}
+nav a:hover {text-decoration: underline;}
+nav a.disabled {pointer-events: none; font-style: italic;}
+nav .expandable:target, nav .expandable:has(:target) {list-style-type: disclosure-open;}
+nav .expandable:not(:target, :has(:target)) {list-style-type: disclosure-closed;}
+nav li {list-style-type: circle;}
+
+nav ul ul {display: none;}
+nav ul :target > ul, nav ul :has(:target) > ul {display: block;}
+
+/* MAIN */
+@import url('https://cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css/github-markdown.css');
+
+/* FOOTER */
+footer {position: fixed; bottom: 0; left: 0; width: 100%; background-color: #ddd; padding: 0.5rem 0.5rem 0.25rem 0.5rem; border-top: 0.25rem solid #aaa;}

@@ -5,42 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About HSSP | HSSP documentation</title>
-    <style>
-        /* Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans');
-
-        /* HEADER */
-        header {font-family: 'Noto Sans', sans-serif;}
-        header a, header a:visited, header a:link, header a:hover, header:active {color: #fff; text-decoration: none;}
-        header h1 {background-color: #333; color: #fff; padding: 0.5rem; border-radius: 0.5rem; display: inline-block; margin: 0 0 1rem 0;}
-
-        /* NAV */
-        nav {background-color: #ddd; width: 100%; padding: 0.5rem 0; border-top: 0.25rem solid #aaa; border-bottom: 0.25rem solid #aaa;}
-        nav::before {content: 'navigation'; font-variant: small-caps; margin: 0 0 0 1.25rem; border-bottom: 0.25rem solid #aaa;}
-
-        :target > .nav-expand, :has(:target) > .nav-expand {display: none;}
-        :not(:target, :has(:target)) > .nav-expand {display: block;}
-        :target > .nav-collapse, :has(:target) > .nav-collapse {display: block;}
-        :not(:target, :has(:target)) > .nav-collapse {display: none;}
-
-        nav a, nav a:visited, nav a:link, nav a:hover, nav:active {color: #000; text-decoration: none;}
-        nav a:hover {text-decoration: underline;}
-        nav a.disabled {pointer-events: none; font-style: italic;}
-        nav .expandable:target, nav .expandable:has(:target) {list-style-type: disclosure-open;}
-        nav .expandable:not(:target, :has(:target)) {list-style-type: disclosure-closed;}
-        nav li {list-style-type: circle;}
-
-        nav ul ul {display: none;}
-        nav ul :target > ul, nav ul :has(:target) > ul {display: block;}
-
-        /* FOOTER */
-        footer {position: fixed; bottom: 0; left: 0; width: 100%; background-color: #ddd; padding: 0.5rem 0.5rem 0.25rem 0.5rem; border-top: 0.25rem solid #aaa;}
-    </style>
+    <link rel="stylesheet" href="/docs/style.css">
 </head>
 <body>
-    <header><h1>
+    <header><h1><a href="/docs/">
         HSSP documentation
-    </h1></header>
+    </a></h1></header>
     <nav><ul>
         <li><a href="/docs/about" class="disabled">About</a></li>
         <li id="nav-encryption" class="expandable">
@@ -77,7 +47,7 @@
         </li>
     </ul></nav>
 
-    <main>
+    <main class="markdown-body">
         <h2>About HSSP</h2>
         <p>
             HSSP is a modern, fast & secure archive format.
