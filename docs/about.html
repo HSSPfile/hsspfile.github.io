@@ -6,7 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About HSSP | HSSP documentation</title>
     <style>
+        /* Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans');
+
+        /* HEADER */
+        header {font-family: 'Noto Sans', sans-serif;}
+        header h1 {background-color: #333; color: #fff; padding: 0.125rem; border-radius: 0.125rem;}
+
         /* NAV */
+        nav {background-color: #ddd; width: 100%; padding: 0.5rem 0; border-top: 0.25rem solid #aaa; border-bottom: 0.25rem solid #aaa;}
+        nav::before {content: 'navigation'; font-variant: small-caps; margin: 0 0 0 1.25rem; border-bottom: 0.25rem solid #aaa;}
+
         :target > .nav-expand, :has(:target) > .nav-expand {display: none;}
         :not(:target, :has(:target)) > .nav-expand {display: block;}
         :target > .nav-collapse, :has(:target) > .nav-collapse {display: block;}
