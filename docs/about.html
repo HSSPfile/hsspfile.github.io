@@ -19,7 +19,7 @@
         nav .expandable:not(:target, :has(:target)) {list-style-type: disclosure-closed;}
 
         nav ul ul {display: none;}
-        nav ul :target > ul, nav ul :has(:target) {display: block;}
+        nav ul :target > ul, nav ul :has(:target) > ul {display: block;}
     </style>
 </head>
 <body>
@@ -42,7 +42,7 @@
                 <li>Overview</li>
                 <li id="nav-versions-v4" class="expandable">
                     <a href="#nav-versions-v4" class="nav-expand">v4</a>
-                    <a href="#" class="nav-collapse">v4</a>
+                    <a href="#nav-versions" class="nav-collapse">v4</a>
                     <ul>
                         <li>Changelog</li>
                     </ul>
