@@ -1,5 +1,6 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans');
+html, body {font-family: 'Noto Sans', sans-serif;}
 
 /* HEADER */
 header {font-family: 'Noto Sans', sans-serif;}
@@ -27,6 +28,7 @@ nav ul :target > ul, nav ul :has(:target) > ul {display: block;}
 
 /* MAIN */
 @import url('https://cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css/github-markdown.css');
+main.markdown-body {font-family: 'Noto Sans', sans-serif;}
 
 /* FOOTER */
 footer {position: fixed; bottom: 0; left: 0; width: 100%; background-color: #ddd; padding: 0.5rem 0.5rem 0.25rem 0.5rem; border-top: 0.25rem solid #aaa;}
