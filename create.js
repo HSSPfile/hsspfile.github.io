@@ -40,6 +40,7 @@ const permissionVisualizer = (val, toBase8, onChange) => {
             };
         });
     });
+    return visualizer.outerHTML;
 };
 
 (async () => {
@@ -59,8 +60,8 @@ const permissionVisualizer = (val, toBase8, onChange) => {
         });
         var el = document.createElement('tr');
         const splitFileName = file.name.split('/');
-        const filePath = splitFileName.pop();
-        const fileName = '/' + splitFileName.join('/');
+        const fileName = splitFileName.pop();
+        const filePath = '/' + splitFileName.join('/');
         el.innerHTML = `<td><a href="javascript:download('${file.name}')">${fileName}</a></td><td>${filePath}</td><td>${permissionVisualizer(editor.files[file.name].options.permissions, true, permission => {
             var oldFile = editor.remove(file.name);
             oldFile.options.permissions = permission;
