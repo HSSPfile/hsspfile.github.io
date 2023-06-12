@@ -15,7 +15,7 @@ const files = [];
         reader.readAsArrayBuffer(file);
     });
     
-    document.getElementById('input').onchange = async (ev) => {
+    upload.onchange = async (ev) => {
         const index = files.push(await fileReadEventHandler(ev));
     };
 })();
