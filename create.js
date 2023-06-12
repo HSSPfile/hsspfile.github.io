@@ -16,7 +16,7 @@ const fileList = document.getElementById('file-list');
     upload.onchange = async (ev) => {
         const file = await fileReadEventHandler(ev);
         editor.addFile(file.name, file.buffer, {
-            changed: new Date(files[index].name)
+            changed: new Date(file.changed)
         });
         console.log(editor.files[file.name]);
     };
