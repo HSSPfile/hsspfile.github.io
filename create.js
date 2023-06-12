@@ -3,8 +3,6 @@ const editor = new HSSP.Editor();
 const upload = document.getElementById('upload');
 const fileList = document.getElementById('file-list');
 
-const files = [];
-
 (async ()=> {
     await HSSP.init();
 
@@ -16,10 +14,10 @@ const files = [];
     });
     
     upload.onchange = async (ev) => {
-        const index = files.push(await fileReadEventHandler(ev));
-        editor.addFile(files[index].name, files[index].buffer, {
+        const file = await fileReadEventHandler(ev);
+        editor.addFile(file.name, file.buffer, {
             changed: new Date(files[index].name)
         });
-        console.log(editor.files[files[index].name]);
+        console.log(editor.files[file.name]);
     };
 })();
