@@ -40,7 +40,7 @@ const permissionVisualizer = (val, toBase8, onChange) => {
             };
         });
     });
-    return visualizer.outerHTML;
+    return '<span class="permission">' + visualizer.innerHTML + '</span>';
 };
 
 (async () => {
