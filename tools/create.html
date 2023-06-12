@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create package | HSSP tools</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header><h1><a href="/tools/">
+        HSSP tools
+    </a></h1></header>
+    <nav><ul>
+        <li><a href="/tools/">Overview</a></li>
+        <li id="nav-tools" class="expandable">
+            <a href="#nav-tools" class="nav-expand">Tools</a>
+            <a href="#" class="nav-collapse">Tools</a>
+            <ul>
+                <li><a href="/tools/create" class="disabled">Create package</a></li>
+                <li><a href="/tools/extract">Extract package</a></li>
+            </ul>
+        </li>
+    </ul></nav>
+
+    <main class="markdown-body">
+        <h2>Create package</h2>
+        <p>
+            Add a file: <input type="file" id="upload"><br>
+            <table>
+                <tr><th>Name</th><th>Permissions</th><th>Attributes</th></tr>
+                <span id="file-list"></span>
+            </table>
+        </p>
+    </main>
+
+    <script src="/js/web.js"></script>
+    <script src="/create.js"></script>
+
+    <footer>
+        <a href="https://github.com/HSSPfile"><img src="https://img.shields.io/badge/GitHub-333333?style=flat&logo=github&logoColor=ffffff" alt="GitHub"></a>
+        <a href="/tools"><img src="https://img.shields.io/badge/Tools-333333?style=flat&logo=javascript&logoColor=ffffff" alt="Tools"></a>
+        <a href="/docs"><img src="https://img.shields.io/badge/Documentation-333333?style=flat&logo=gitbook&logoColor=ffffff" alt="Documentation"></a>
+    </footer>
+</body>
+</html>
