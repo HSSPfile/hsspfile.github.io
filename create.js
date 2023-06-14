@@ -47,11 +47,11 @@ const permissionVisualizer = (val, toBase8, onChange) => {
                         return 'x';
                 };
             })() : '-';
-            element.onclick = () => {
+            element.addEventListener('click', () => {
                 permissionBinary[i * 3 + j] = !permissionBinary[i * 3 + j];
                 permission = parseInt(permissionBinary.map(bool => +bool).join(''), 2);
                 onChange(toBase8 ? +permission.toString(8) : permission);
-            };
+            });
         });
     });
     return '<span class="permission">' + visualizer.innerHTML + '</span>';
