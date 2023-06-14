@@ -1,2 +1,2 @@
 plugins:
-  - "jekyll-github-metadata"
+  - jekyll-github-metadata
