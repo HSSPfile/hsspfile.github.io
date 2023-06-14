@@ -112,6 +112,8 @@ const permissionVisualizer = (val, toBase8, onChange) => {
                 removeEventListener(noListener);
                 document.getElementById('file-delete').close();
             });
+
+            document.getElementById('file-delete').showModal();
         });
     };
 })();
