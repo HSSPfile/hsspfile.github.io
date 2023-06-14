@@ -49,6 +49,16 @@ const permissionVisualizer = (val, toBase8, onChange) => {
             })() : '-';
             element.addEventListener('click', () => {
                 permissionBinary[i * 3 + j] = !permissionBinary[i * 3 + j];
+                element.innerText = permissionBinary[i * 3 + j] ? (() => {
+                    switch (j) {
+                        case 0:
+                            return 'r';
+                        case 1:
+                            return 'w';
+                        case 2:
+                            return 'x';
+                    };
+                })() : '-';
                 permission = parseInt(permissionBinary.map(bool => +bool).join(''), 2);
                 onChange(toBase8 ? +permission.toString(8) : permission);
             });
