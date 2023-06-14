@@ -110,8 +110,11 @@ const permissionVisualizer = (val, toBase8, onChange) => {
             document.getElementById('file-detail-owner').value = oldFile.options.owner;
             document.getElementById('file-detail-group').value = oldFile.options.group;
 
+            oldFile.options.created.setUTCHours(0, 0, 0, 0);
             document.getElementById('file-detail-created').value = oldFile.options.created.toISOString().slice(0, -1);
+            oldFile.options.changed.setUTCHours(0, 0, 0, 0);
             document.getElementById('file-detail-changed').value = oldFile.options.changed.toISOString().slice(0, -1);
+            oldFile.options.opened.setUTCHours(0, 0, 0, 0);
             document.getElementById('file-detail-opened').value = oldFile.options.opened.toISOString().slice(0, -1);
 
             document.getElementById('file-detail-link').value = oldFile.options.webLink;
