@@ -32,3 +32,13 @@ main.markdown-body {font-family: 'Noto Sans', sans-serif;}
 
 /* FOOTER */
 footer {position: fixed; bottom: 0; left: 0; width: 100%; background-color: #ddd; padding: 0.5rem 0.5rem 0.25rem 0.5rem; border-top: 0.25rem solid #aaa;}
+
+/* Other */
+.permissions {font-family: 'Cascadia Code', monospace; user-select: none; cursor: pointer;}
+.permissions .allowed {font-weight: bold;}
+.permissions .r {color: #888;}
+.permissions .w {color: #666;}
+.permissions .x {color: #444;}
+.permissions .r.allowed {color: #187;}
+.permissions .w.allowed {color: #781;}
+.permissions .x.allowed {color: #817;}

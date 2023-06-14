@@ -59,6 +59,7 @@ const permissionVisualizer = (val, toBase8, onChange) => {
                             return 'x';
                     };
                 })() : '-';
+                if (permissionBinary[i * 3 + j]) element.classList.add('allowed'); else element.classList.remove('allowed');
                 permission = parseInt(permissionBinary.map(bool => +bool).join(''), 2);
                 onChange(toBase8 ? +permission.toString(8) : permission);
             });
