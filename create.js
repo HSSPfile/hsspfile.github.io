@@ -16,7 +16,24 @@ const download = (name) => {
 const permissionVisualizer = (val, toBase8, onChange) => {
     var permission = toBase8 ? parseInt(val, 8) : val;
     var visualizer = document.createElement('span');
-    visualizer.innnerHTML = '<span class="owner"><span class="r"></span><span class="w"></span><span class="x"></span></span><span class="group"><span class="r"></span><span class="w"></span><span class="x"></span></span><span class="everyone"><span class="r"></span><span class="w"></span><span class="x"></span></span>';
+    visualizer.appendChild((() => {
+        var el = document.createElement('span');
+        el.classList.add('owner');
+        el.innerHTML = '<span class="r"></span><span class="w"></span><span class="x"></span>';
+        return el;
+    })());
+    visualizer.appendChild((() => {
+        var el = document.createElement('span');
+        el.classList.add('group');
+        el.innerHTML = '<span class="r"></span><span class="w"></span><span class="x"></span>';
+        return el;
+    })());
+    visualizer.appendChild((() => {
+        var el = document.createElement('everyone');
+        el.classList.add('owner');
+        el.innerHTML = '<span class="r"></span><span class="w"></span><span class="x"></span>';
+        return el;
+    })());
     var permissionBinary = permission.toString(2).split('').map(int => !!parseInt(int));
     Array.from(visualizer.children).forEach((element, i) => {
         Array.from(element.children).forEach((element, j) => {
