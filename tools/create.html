@@ -27,6 +27,16 @@
         <h2>Create package</h2>
         <p>
             Add a file: <input type="file" id="upload"><br>
+            Select a version: <select id="version">
+                <optgroup label="Supported versions">
+                    <option value="4" selected>Indexable (v4)</option>
+                </optgroup>
+                <optgroup label="Legacy versions">
+                    <option value="3">Doubleheader (v3)</option>
+                    <option value="2">Rightfolder (v2)</option>
+                    <option value="1">Wrongfolder (v1)</option>
+                </optgroup>
+            </select><br>
             <table id="file-list">
                 <tr><th>Name</th><th>Path</th><th>Permissions</th><th></th></tr>
             </table>
@@ -58,6 +68,7 @@
                 <button id="file-delete-no">No, don't delete the file</button><br>
                 <button id="file-delete-yes">Yes, delete the file</button><br>
             </dialog>
+            <br><button id="create">Create &amp; download!</button>
         </p>
     </main>
 

@@ -1,7 +1,9 @@
 const editor = new HSSP.Editor();
 
 const upload = document.getElementById('upload');
+const version = document.getElementById('version');
 const fileList = document.getElementById('file-list');
+const create = document.getElementById('create');
 
 const download = (name) => {
     const a = document.createElement('a');
@@ -163,4 +165,33 @@ const permissionVisualizer = (val, toBase8, onChange) => {
             document.getElementById('file-delete').showModal();
         });
     };
+
+    create.addEventListener('click', () => {
+        create.disabled = true;
+        create.innerText = 'Please wait...';
+
+        editor.version = parseInt(version.value);
+
+        const a = document.createElement('a');
+        a.download = window.location.href
+            .split(':').join('_')
+            .split('/').join('_')
+            .split('\\').join('_')
+            .split('*').join('_')
+            .split('.').join('_')
+            .split('?').join('_')
+            .split('"').join('_')
+            .split('\'').join('_')
+            .split('<').join('_')
+            .split('>').join('_')
+            .split('|').join('_') + '.hssp';
+        const blob = new Blob([editor.toBuffer()], { type: 'application/octet-stream' });
+        const url = URL.createObjectURL(blob);
+        a.href = url;
+        a.click();
+        URL.revokeObjectURL(url);
+
+        create.innerText = 'Create & download!';
+        create.disabled = false;
+    });
 })();
