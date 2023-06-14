@@ -96,5 +96,22 @@ const permissionVisualizer = (val, toBase8, onChange) => {
             oldFile.options.permissions = permission;
             editor.addFile(file.name, oldFile.buffer, oldFile.options);
         }));
+        el.children[3].children[0].addEventListener('click', () => {});
+        el.children[3].children[1].addEventListener('click', () => {
+            document.getElementById('file-delete-name').innerText = el.children[0].children[0].innerText;
+
+            const yesListener = document.getElementById('file-delete-yes').addEventListener('click', () => {
+                removeEventListener(yesListener);
+                removeEventListener(noListener);
+                editor.remove(el.children[1].innerText.replace('/', '') + el.children[0].children[0].innerText);
+                el.parentElement.parentElement.removeChild(el.parentElement);
+                document.getElementById('file-delete').close();
+            });
+            const noListener = document.getElementById('file-delete-no').addEventListener('click', () => {
+                removeEventListener(yesListener);
+                removeEventListener(noListener);
+                document.getElementById('file-delete').close();
+            });
+        });
     };
 })();
