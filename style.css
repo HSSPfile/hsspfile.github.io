@@ -42,3 +42,6 @@ footer {position: fixed; bottom: 0; left: 0; width: 100%; background-color: #ddd
 .permissions .r.allowed {color: #187;}
 .permissions .w.allowed {color: #781;}
 .permissions .x.allowed {color: #817;}
+
+th {background: linear-gradient(45deg, rgba(214,109,255,1) 0%, rgba(105,168,255,1) 25%, rgba(104,104,255,1) 50%, rgba(255,104,104,1) 75%, rgba(246,104,255,1) 100%); color: #fff;}
+th, td {border-right: 1px solid #000; border-bottom: 1px solid #000;}
