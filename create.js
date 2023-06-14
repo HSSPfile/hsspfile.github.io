@@ -16,6 +16,7 @@ const download = (name) => {
 const permissionVisualizer = (val, toBase8, onChange) => {
     var permission = toBase8 ? parseInt(val, 8) : val;
     var visualizer = document.createElement('span');
+    visualizer.classList.add('permissions');
     visualizer.appendChild((() => {
         var el = document.createElement('span');
         el.classList.add('owner');
