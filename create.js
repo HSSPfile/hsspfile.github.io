@@ -37,6 +37,7 @@ const permissionVisualizer = (val, toBase8, onChange) => {
     var permissionBinary = permission.toString(2).split('').map(int => !!parseInt(int));
     Array.from(visualizer.children).forEach((element, i) => {
         Array.from(element.children).forEach((element, j) => {
+            if (permissionBinary[i * 3 + j]) element.classList.add('allowed'); else element.classList.remove('allowed');
             element.innerText = permissionBinary[i * 3 + j] ? (() => {
                 switch (j) {
                     case 0:
