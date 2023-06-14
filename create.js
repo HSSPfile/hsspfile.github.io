@@ -89,7 +89,7 @@ const permissionVisualizer = (val, toBase8, onChange) => {
         const splitFileName = file.name.split('/');
         const fileName = splitFileName.pop();
         const filePath = '/' + splitFileName.join('/');
-        el.innerHTML = `<td><a href="javascript:download('${file.name}')">${fileName}</a></td><td>${filePath}</td><td></td>`;
+        el.innerHTML = `<td><a href="javascript:download('${file.name}')">${fileName}</a></td><td>${filePath}</td><td><button class="material-symbols-outlined">tune</button><button class="material-symbols-outlined">delete</button></td>`;
         fileList.appendChild(el);
         el.children[2].appendChild(permissionVisualizer(editor.files[file.name].options.permissions, true, permission => {
             var oldFile = editor.remove(file.name);
