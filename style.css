@@ -43,5 +43,6 @@ footer {position: fixed; bottom: 0; left: 0; width: 100%; background-color: #ddd
 .permissions .w.allowed {color: #781;}
 .permissions .x.allowed {color: #817;}
 
-th {background-color: #ddd;}
-td {border-right: 1px solid #000; border-bottom: 1px solid #000;}
+table {background-color: #ddd; border-top: 0.25rem solid #aaa; border-bottom: 0.25rem solid #aaa;}
+th {background-color: #bbb;}
+th, td {border-right: 0.25rem solid #aaa; border-bottom: 0.25rem solid #aaa;}
