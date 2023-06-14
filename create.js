@@ -100,18 +100,20 @@ const permissionVisualizer = (val, toBase8, onChange) => {
         el.children[3].children[1].addEventListener('click', () => {
             document.getElementById('file-delete-name').innerText = el.children[0].children[0].innerText;
 
-            const yesListener = document.getElementById('file-delete-yes').addEventListener('click', () => {
-                removeEventListener(yesListener);
-                removeEventListener(noListener);
+            const yesListener = () => {
+                document.getElementById('file-delete-yes').removeEventListener('click', yesListener);
+                document.getElementById('file-delete-no').removeEventListener('click', noListener);
                 editor.remove(el.children[1].innerText.replace('/', '') + el.children[0].children[0].innerText);
                 el.parentElement.parentElement.removeChild(el.parentElement);
                 document.getElementById('file-delete').close();
-            });
-            const noListener = document.getElementById('file-delete-no').addEventListener('click', () => {
-                removeEventListener(yesListener);
-                removeEventListener(noListener);
+            };
+            document.getElementById('file-delete-yes').addEventListener('click', yesListener);
+            const noListener = () => {
+                document.getElementById('file-delete-yes').removeEventListener('click', yesListener);
+                document.getElementById('file-delete-no').removeEventListener('click', noListener);
                 document.getElementById('file-delete').close();
-            });
+            };
+            document.getElementById('file-delete-no').addEventListener('click', noListener);
 
             document.getElementById('file-delete').showModal();
         });
