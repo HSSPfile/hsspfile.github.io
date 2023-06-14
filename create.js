@@ -29,7 +29,7 @@ const permissionVisualizer = (val, toBase8, onChange) => {
                     case 2:
                         return 'x';
                 };
-            }) : '-';
+            })() : '-';
             element.onclick = () => {
                 permissionBinary[i * 3 + j] = !permissionBinary[i * 3 + j];
                 permission = parseInt(permissionBinary.map(bool => +bool).join(''), 2);
