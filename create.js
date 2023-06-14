@@ -96,7 +96,52 @@ const permissionVisualizer = (val, toBase8, onChange) => {
             oldFile.options.permissions = permission;
             editor.addFile(file.name, oldFile.buffer, oldFile.options);
         }));
-        el.children[3].children[0].addEventListener('click', () => {});
+        el.children[3].children[0].addEventListener('click', () => {
+            document.getElementById('file-detail-name').innerText = el.children[0].children[0].innerText;
+
+            var oldFile = editor.remove(file.name);
+            document.getElementById('file-detail-hide').checked = oldFile.options.hidden;
+            document.getElementById('file-detail-sys').checked = oldFile.options.system;
+            document.getElementById('file-detail-bkup-enable').checked = oldFile.options.enableBackup;
+            document.getElementById('file-detail-bkup-force').checked = oldFile.options.forceBackup;
+            document.getElementById('file-detail-readonly').checked = oldFile.options.readOnly;
+            document.getElementById('file-detail-main').checked = oldFile.options.mainFile;
+
+            document.getElementById('file-detail-owner').value = oldFile.options.owner;
+            document.getElementById('file-detail-group').value = oldFile.options.group;
+
+            document.getElementById('file-detail-created').value = oldFile.options.created.toISOString().slice(0, -1);
+            document.getElementById('file-detail-changed').value = oldFile.options.changed.toISOString().slice(0, -1);
+            document.getElementById('file-detail-opened').value = oldFile.options.opened.toISOString().slice(0, -1);
+
+            document.getElementById('file-detail-link').value = oldFile.options.webLink;
+
+            const applyListener = () => {
+                document.getElementById('file-detail-apply').removeEventListener('click', applyListener);
+
+                oldFile.options.hidden = document.getElementById('file-detail-hide').checked;
+                oldFile.options.system = document.getElementById('file-detail-sys').checked;
+                oldFile.options.enableBackup = document.getElementById('file-detail-bkup-enable').checked;
+                oldFile.options.forceBackup = document.getElementById('file-detail-bkup-force').checked;
+                oldFile.options.readOnly = document.getElementById('file-detail-readonly').checked;
+                oldFile.options.mainFile = document.getElementById('file-detail-main').checked;
+
+                oldFile.options.owner = document.getElementById('file-detail-owner').value;
+                oldFile.options.group = document.getElementById('file-detail-group').value;
+
+                oldFile.options.created = new Date(document.getElementById('file-detail-created').value);
+                oldFile.options.changed = new Date(document.getElementById('file-detail-changed').value);
+                oldFile.options.opened = new Date(document.getElementById('file-detail-opened').value);
+
+                oldFile.options.webLink = document.getElementById('file-detail-link').value;
+
+                editor.addFile(file.name, oldFile.buffer, oldFile.options);
+                document.getElementById('file-detail').close();
+            };
+            document.getElementById('file-detail-apply').addEventListener('click', applyListener);
+
+            document.getElementById('file-detail').showModal();
+        });
         el.children[3].children[1].addEventListener('click', () => {
             document.getElementById('file-delete-name').innerText = el.children[0].children[0].innerText;
 
