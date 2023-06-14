@@ -30,6 +30,31 @@
             <table id="file-list">
                 <tr><th>Name</th><th>Path</th><th>Permissions</th><th></th></tr>
             </table>
+            <dialog id="file-detail">
+                <label for="file-detail-hide">Is the file hidden?</label> <input type="checkbox" id="file-detail-hide"><br>
+                <label for="file-detail-sys">Is the file a system file?</label> <input type="checkbox" id="file-detail-sys"><br>
+
+                <label for="file-detail-bkup-enable">Enable this file for backups?</label> <input type="checkbox" id="file-detail-bkup-enable"><br>
+                <label for="file-detail-bkup-force">Should the file be backed up (for very important files)?</label> <input type="checkbox" id="file-detail-bkup-force"><br>
+
+                <label for="file-detail-readonly">Should be write operations disabled?</label> <input type="checkbox" id="file-detail-readonly"><br>
+                <label for="file-detail-main">Is this the main file of the directory?</label> <input type="checkbox" id="file-detail-main"><br>
+
+                <label for="file-detail-owner">Is this the main file of the directory?</label> <input type="text" maxlength="65535" id="file-detail-owner"><br>
+                <label for="file-detail-group">Is this the main file of the directory?</label> <input type="text" maxlength="65535" id="file-detail-group"><br>
+
+                <label for="file-detail-created">Creation time/date:</label> <input type="datetime-local" id="file-detail-created"><br>
+                <label for="file-detail-changed">Last changed:</label> <input type="datetime-local" id="file-detail-changed"><br>
+                <label for="file-detail-opened">Last opened:</label> <input type="datetime-local" id="file-detail-opened"><br>
+
+                <label for="file-detail-link">Link to an exact same file on the web:</label> <input type="checkbox" maxlength="4294967295" id="file-detail-link"><br>
+            </dialog>
+            <dialog id="file-delete">
+                <h3>Are you sure you want to delete "<span id="file-delete-name"></span>"?</h3>
+                <h5>This action cannot be undone!</h5>
+                <button id="file-delete-no">No, don't delete the file</button><br>
+                <button id="file-delete-yes">Yes, delete the file</button><br>
+            </dialog>
         </p>
     </main>
 
