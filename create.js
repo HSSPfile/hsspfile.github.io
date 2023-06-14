@@ -176,6 +176,7 @@ const permissionVisualizer = (val, toBase8, onChange) => {
         a.download = window.location.href
             .split(':').join('_')
             .split('/').join('_')
+            .split('#').join('_')
             .split('\\').join('_')
             .split('*').join('_')
             .split('.').join('_')
