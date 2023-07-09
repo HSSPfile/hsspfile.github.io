@@ -4,10 +4,12 @@ const upload = document.getElementById('upload');
 const version = document.getElementById('version');
 const fileList = document.getElementById('file-list');
 
+var files = {};
+
 const download = (name) => {
     const a = document.createElement('a');
     a.download = name;
-    const blob = new Blob([editor.files[name].buffer], { type: 'application/octet-stream' });
+    const blob = new Blob([files[name].buffer], { type: 'application/octet-stream' });
     const url = URL.createObjectURL(blob);
     a.href = url;
     a.click();
@@ -68,65 +70,39 @@ const permissionVisualizer = (val, toBase8, onChange) => {
     upload.onchange = async (ev) => {
         const package = await fileReadEventHandler(ev);
         editor.import(package);
-        const files = editor.files;
+        files = editor.files;
+        fileList.innerHTML = '<tr><th>Name</th><th>Path</th><th>Permissions</th><th></th></tr>';
         Object.keys(files).forEach(fileName => {
             const file = files[fileName];
             console.log(file);
-            /*
+            
             var el = document.createElement('tr');
-            const splitFileName = file.name.split('/');
-            const fileName = splitFileName.pop();
+            const splitFileName = fileName.split('/');
+            const fileNameTable = splitFileName.pop();
             const filePath = '/' + splitFileName.join('/');
-            el.innerHTML = `<td><a href="javascript:download('${file.name}')">${fileName}</a></td><td>${filePath}</td><td></td><td><button class="material-symbols-outlined">tune</button><button class="material-symbols-outlined">delete</button></td>`;
+            el.innerHTML = `<td><a href="javascript:download('${fileName}')">${fileNameTable}</a></td><td>${filePath}</td><td></td><td><button class="material-symbols-outlined">tune</button><button class="material-symbols-outlined" disabled>delete</button></td>`;
             fileList.appendChild(el);
-            el.children[2].appendChild(permissionVisualizer(editor.files[file.name].options.permissions, true, permission => {
-                var oldFile = editor.remove(file.name);
-                oldFile.options.permissions = permission;
-                editor.addFile(file.name, oldFile.buffer, oldFile.options);
-            }));
+            el.children[2].appendChild(permissionVisualizer(file.options.permissions, true, permission => {}));
             el.children[3].children[0].addEventListener('click', () => {
                 document.getElementById('file-detail-name').innerText = el.children[0].children[0].innerText;
 
-                var oldFile = editor.remove(file.name);
-                document.getElementById('file-detail-hide').checked = oldFile.options.hidden;
-                document.getElementById('file-detail-sys').checked = oldFile.options.system;
-                document.getElementById('file-detail-bkup-enable').checked = oldFile.options.enableBackup;
-                document.getElementById('file-detail-bkup-force').checked = oldFile.options.forceBackup;
-                document.getElementById('file-detail-readonly').checked = oldFile.options.readOnly;
-                document.getElementById('file-detail-main').checked = oldFile.options.mainFile;
+                document.getElementById('file-detail-hide').checked = file.options.hidden;
+                document.getElementById('file-detail-sys').checked = file.options.system;
+                document.getElementById('file-detail-bkup-enable').checked = file.options.enableBackup;
+                document.getElementById('file-detail-bkup-force').checked = file.options.forceBackup;
+                document.getElementById('file-detail-readonly').checked = file.options.readOnly;
+                document.getElementById('file-detail-main').checked = file.options.mainFile;
 
-                document.getElementById('file-detail-owner').value = oldFile.options.owner;
-                document.getElementById('file-detail-group').value = oldFile.options.group;
+                document.getElementById('file-detail-owner').value = file.options.owner;
+                document.getElementById('file-detail-group').value = file.options.group;
 
-                document.getElementById('file-detail-created').value = (new Date(oldFile.options.created.getTime() - oldFile.options.created.getTimezoneOffset() * 60000).toISOString()).slice(0, -1);
-                document.getElementById('file-detail-changed').value = (new Date(oldFile.options.changed.getTime() - oldFile.options.changed.getTimezoneOffset() * 60000).toISOString()).slice(0, -1);
-                document.getElementById('file-detail-opened').value = (new Date(oldFile.options.opened.getTime() - oldFile.options.opened.getTimezoneOffset() * 60000).toISOString()).slice(0, -1);
+                document.getElementById('file-detail-created').value = (new Date(file.options.created.getTime() - file.options.created.getTimezoneOffset() * 60000).toISOString()).slice(0, -1);
+                document.getElementById('file-detail-changed').value = (new Date(file.options.changed.getTime() - file.options.changed.getTimezoneOffset() * 60000).toISOString()).slice(0, -1);
+                document.getElementById('file-detail-opened').value = (new Date(file.options.opened.getTime() - file.options.opened.getTimezoneOffset() * 60000).toISOString()).slice(0, -1);
 
-                document.getElementById('file-detail-link').value = oldFile.options.webLink;
+                document.getElementById('file-detail-link').value = file.options.webLink;
 
-                const applyListener = () => {
-                    document.getElementById('file-detail-apply').removeEventListener('click', applyListener);
-
-                    oldFile.options.hidden = document.getElementById('file-detail-hide').checked;
-                    oldFile.options.system = document.getElementById('file-detail-sys').checked;
-                    oldFile.options.enableBackup = document.getElementById('file-detail-bkup-enable').checked;
-                    oldFile.options.forceBackup = document.getElementById('file-detail-bkup-force').checked;
-                    oldFile.options.readOnly = document.getElementById('file-detail-readonly').checked;
-                    oldFile.options.mainFile = document.getElementById('file-detail-main').checked;
-
-                    oldFile.options.owner = document.getElementById('file-detail-owner').value;
-                    oldFile.options.group = document.getElementById('file-detail-group').value;
-
-                    oldFile.options.created = new Date(document.getElementById('file-detail-created').value);
-                    oldFile.options.changed = new Date(document.getElementById('file-detail-changed').value);
-                    oldFile.options.opened = new Date(document.getElementById('file-detail-opened').value);
-
-                    oldFile.options.webLink = document.getElementById('file-detail-link').value;
-
-                    editor.addFile(file.name, oldFile.buffer, oldFile.options);
-                    document.getElementById('file-detail').close();
-                };
-                document.getElementById('file-detail-apply').addEventListener('click', applyListener);
+                document.getElementById('file-detail-close').addEventListener('click', () => document.getElementById('file-detail').close());
 
                 document.getElementById('file-detail').showModal();
                 
@@ -150,7 +126,7 @@ const permissionVisualizer = (val, toBase8, onChange) => {
                 document.getElementById('file-delete-no').addEventListener('click', noListener);
 
                 document.getElementById('file-delete').showModal();
-            });*/
+            });
         });
     };
 })();
