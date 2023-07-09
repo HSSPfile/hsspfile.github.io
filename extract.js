@@ -151,34 +151,4 @@ const permissionVisualizer = (val, toBase8, onChange) => {
             });*/
         });
     };
-
-    create.addEventListener('click', () => {
-        create.disabled = true;
-        create.innerText = 'Please wait...';
-
-        editor.version = parseInt(version.value);
-
-        const a = document.createElement('a');
-        a.download = window.location.href
-            .split(':').join('_')
-            .split('/').join('_')
-            .split('#').join('_')
-            .split('\\').join('_')
-            .split('*').join('_')
-            .split('.').join('_')
-            .split('?').join('_')
-            .split('"').join('_')
-            .split('\'').join('_')
-            .split('<').join('_')
-            .split('>').join('_')
-            .split('|').join('_') + '.hssp';
-        const blob = new Blob([editor.toBuffer()], { type: 'application/octet-stream' });
-        const url = URL.createObjectURL(blob);
-        a.href = url;
-        a.click();
-        URL.revokeObjectURL(url);
-
-        create.innerText = 'Create & download!';
-        create.disabled = false;
-    });
 })();
