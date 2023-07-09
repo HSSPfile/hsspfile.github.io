@@ -69,6 +69,16 @@
             </dialog>
             <br><label for="use-password">Encrypt content?</label> <input type="checkbox" id="use-password">
             <br><label for="password">Password:</label> <input type="password" id="password" placeholder="Password" disabled>
+            <br><br><label for="compression">Compression algorithm:</label> <select id="compression">
+                <option value="NONE" selected>None</option>
+                <optgroup label="Weaker compression">
+                    <option value="DEFLATE">Deflate</option>
+                </optgroup>
+                <optgroup label="Stronger compression">
+                    <option value="LZMA">LZMA</option>
+                </optgroup>
+            </select>
+            <br><label for="compression-level">Compression level:</label> <input type="range" min="0" max="9" value="4" id="compression-level" disabled><input type="number" min="0" max="9" value="4" id="compression-level-number" disabled>
             <br><br><button id="create">Create &amp; download!</button>
             <br><br><br>
             This tool was built on top of the <a href="/docs/js/">official HSSP JavaScript API</a> for the web.

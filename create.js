@@ -5,6 +5,9 @@ const version = document.getElementById('version');
 const fileList = document.getElementById('file-list');
 const usePassword = document.getElementById('use-password');
 const password = document.getElementById('password');
+const compression = document.getElementById('compression');
+const compressionLvl = document.getElementById('compression-level');
+const compressionLvlNum = document.getElementById('compression-level-number');
 const create = document.getElementById('create');
 
 const download = (name) => {
@@ -82,6 +85,29 @@ password.onchange = () => {
     editor.password = password.value;
 };
 password.onkeydown = password.onchange;
+
+compression.onchange = () => {
+    if (compression.value != 'NONE') {
+        compressionLvl.disabled = false;
+        compressionLvlNum.disabled = false;
+        editor.compression = { algorithm: compression.value, level: compressionLvl.value };
+    } else {
+        compressionLvl.disabled = true;
+        compressionLvlNum.disabled = true;
+
+        editor.compression = { algorithm: null, level: null };
+    };
+};
+compressionLvl.onchange = () => {
+    compressionLvlNum.value = compressionLvl.value;
+    editor.compression = { algorithm: compression.value, level: compressionLvl.value };
+};
+compressionLvl.onmousedown = compressionLvl.onchange;
+compressionLvlNum.onchange = () => {
+    compressionLvl.value = compressionLvlNum.value;
+    editor.compression = { algorithm: compression.value, level: compressionLvlNum.value };
+};
+compressionLvlNum.onkeydown = compressionLvlNum.onchange;
 
 (async () => {
     await HSSP.init();
