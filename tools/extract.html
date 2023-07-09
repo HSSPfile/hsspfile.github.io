@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create package | HSSP tools</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header><h1><a href="/tools/">
+        HSSP tools
+    </a></h1></header>
+    <nav><ul>
+        <li><a href="/tools/">Overview</a></li>
+        <li id="nav-tools" class="expandable">
+            <a href="#nav-tools" class="nav-expand">Tools</a>
+            <a href="#" class="nav-collapse">Tools</a>
+            <ul>
+                <li><a href="/tools/create">Create package</a></li>
+                <li><a href="/tools/extract" class="disabled">Extract package</a></li>
+            </ul>
+        </li>
+    </ul></nav>
+
+    <main class="markdown-body">
+        <h2>Extract package</h2>
+        <p>
+            Add a package: <input type="file" id="upload"><br>
+            <table id="file-list">
+                <tr><th>Name</th><th>Path</th><th>Permissions</th><th></th></tr>
+            </table>
+            <dialog id="file-detail">
+                <h3 id="file-detail-name"></h3>
+                <label for="file-detail-hide">Is the file hidden?</label> <input type="checkbox" id="file-detail-hide" disabled><br>
+                <label for="file-detail-sys">Is the file a system file?</label> <input type="checkbox" id="file-detail-sys" disabled><br>
+                <br>
+                <label for="file-detail-bkup-enable">Enable this file for backups?</label> <input type="checkbox" id="file-detail-bkup-enable" disabled><br>
+                <label for="file-detail-bkup-force">Should the file be backed up (for very important files)?</label> <input type="checkbox" id="file-detail-bkup-force" disabled><br>
+                <br>
+                <label for="file-detail-readonly">Should be write operations disabled?</label> <input type="checkbox" id="file-detail-readonly" disabled><br>
+                <label for="file-detail-main">Is this the main file of the directory?</label> <input type="checkbox" id="file-detail-main" disabled><br>
+                <br>
+                <label for="file-detail-owner">Owner:</label> <input type="text" maxlength="65535" id="file-detail-owner" disabled><br>
+                <label for="file-detail-group">Group:</label> <input type="text" maxlength="65535" id="file-detail-group" disabled><br>
+                <br>
+                <label for="file-detail-created">Creation time/date:</label> <input type="datetime-local" id="file-detail-created" disabled><br>
+                <label for="file-detail-changed">Last changed:</label> <input type="datetime-local" id="file-detail-changed" disabled><br>
+                <label for="file-detail-opened">Last opened:</label> <input type="datetime-local" id="file-detail-opened" disabled><br>
+                <br>
+                <label for="file-detail-link">Link to an exact same file on the web:</label> <input type="text" maxlength="4294967295" id="file-detail-link" disabled><br>
+                <br>
+                <button id="file-detail-close">Close</button><br>
+            </dialog>
+            <br>Click on a file to download it!
+            <br><br><br>
+            This tool was built on top of the <a href="/docs/js/">official HSSP JavaScript API</a> for the web.
+        </p>
+    </main>
+
+    <script src="/js/web.js"></script>
+    <script src="/extract.js"></script>
+
+    <footer>
+        <a href="https://github.com/HSSPfile"><img src="https://img.shields.io/badge/GitHub-333333?style=flat&logo=github&logoColor=ffffff" alt="GitHub"></a>
+        <a href="/tools"><img src="https://img.shields.io/badge/Tools-333333?style=flat&logo=javascript&logoColor=ffffff" alt="Tools"></a>
+        <a href="/docs"><img src="https://img.shields.io/badge/Documentation-333333?style=flat&logo=gitbook&logoColor=ffffff" alt="Documentation"></a>
+    </footer>
+</body>
+</html>
