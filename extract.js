@@ -69,8 +69,15 @@ const permissionVisualizer = (val, toBase8, onChange) => {
 
     upload.onchange = async (ev) => {
         const package = await fileReadEventHandler(ev);
-        console.log(HSSP.metadata(package));
-        editor.import(package);
+        var pwcorrect = false;
+        var pw = undefined;
+        var pwincorrect = false;
+        while (!pwcorrect) if (HSSP.metadata(package, pw).password.correct === false) {
+            pw = prompt(pwincorrect ? 'This password is not correct\n\nPassword:' : 'This package seems to be encrypted.\n\nPassword:');
+            if (pw === null) return;
+            pwincorrect = true;
+        } else pwcorrect = true;
+        editor.import(package, pw);
         files = editor.files;
         fileList.innerHTML = '<tr><th>Name</th><th>Path</th><th>Permissions</th><th></th></tr>';
         Object.keys(files).forEach(fileName => {
