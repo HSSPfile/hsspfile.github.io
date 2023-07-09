@@ -69,12 +69,12 @@ const permissionVisualizer = (val, toBase8, onChange) => {
 
     upload.onchange = async (ev) => {
         const package = await fileReadEventHandler(ev);
+        console.log(HSSP.metadata(package));
         editor.import(package);
         files = editor.files;
         fileList.innerHTML = '<tr><th>Name</th><th>Path</th><th>Permissions</th><th></th></tr>';
         Object.keys(files).forEach(fileName => {
             const file = files[fileName];
-            console.log(file);
             
             var el = document.createElement('tr');
             const splitFileName = fileName.split('/');
