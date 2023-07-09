@@ -100,9 +100,9 @@ compression.onchange = () => {
 };
 compressionLvl.onchange = () => {
     compressionLvlNum.value = compressionLvl.value;
-    editor.compression = { algorithm: compression.value, level: compressionLvl.value };
+    editor.compression = compression.value != 'NONE' ? { algorithm: compression.value, level: compressionLvl.value } : { algorithm: null, level: null };
 };
-compressionLvl.onmousedown = compressionLvl.onchange;
+compressionLvl.onmouseover = compressionLvl.onchange;
 compressionLvlNum.onchange = () => {
     compressionLvl.value = compressionLvlNum.value;
     editor.compression = { algorithm: compression.value, level: compressionLvlNum.value };
@@ -208,6 +208,7 @@ compressionLvlNum.onkeydown = compressionLvlNum.onchange;
         create.innerText = 'Please wait...';
 
         editor.version = parseInt(version.value);
+        compression.disabled = editor.version < 4;
 
         const a = document.createElement('a');
         a.download = window.location.href
