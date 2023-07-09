@@ -15,8 +15,7 @@ nav input[type=checkbox] {display: none;}
 nav a, nav a:visited, nav a:link, nav a:hover, nav:active {color: #000; text-decoration: none;}
 nav a:hover {text-decoration: underline;}
 nav a.disabled {pointer-events: none; font-style: italic;}
-nav .expandable:checked {list-style-type: disclosure-open;}
-nav .expandable:not(:checked) {list-style-type: disclosure-closed;}
+nav .expandable {list-style-type: disc;}
 nav li {list-style-type: circle;}
 
 nav ul ul {display: none;}
