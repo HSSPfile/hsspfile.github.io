@@ -11,15 +11,16 @@ header h1 {background-color: #333; color: #fff; padding: 0.5rem; border-radius: 
 nav {background-color: #ddd; width: 100%; padding: 0.5rem 0; border-top: 0.25rem solid #aaa; border-bottom: 0.25rem solid #aaa;}
 nav::before {content: 'navigation'; font-variant: small-caps; margin: 0 0 0 1.25rem; border-bottom: 0.25rem solid #aaa;}
 
+nav input[type=checkbox] {display: none;}
 nav a, nav a:visited, nav a:link, nav a:hover, nav:active {color: #000; text-decoration: none;}
 nav a:hover {text-decoration: underline;}
 nav a.disabled {pointer-events: none; font-style: italic;}
-nav .expandable:checked, nav .expandable:has(:checked) {list-style-type: disclosure-open;}
-nav .expandable:not(:checked, :has(:checked)) {list-style-type: disclosure-closed;}
+nav .expandable:checked {list-style-type: disclosure-open;}
+nav .expandable:not(:checked) {list-style-type: disclosure-closed;}
 nav li {list-style-type: circle;}
 
 nav ul ul {display: none;}
-nav ul :checked ~ ul, nav ul :has(:checked) ~ ul {display: block;}
+nav ul :checked ~ ul {display: block;}
 
 /* MAIN */
 @import url('https://cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css/github-markdown.css');
