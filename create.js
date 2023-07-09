@@ -3,6 +3,8 @@ const editor = new HSSP.Editor();
 const upload = document.getElementById('upload');
 const version = document.getElementById('version');
 const fileList = document.getElementById('file-list');
+const usePassword = document.getElementById('use-password');
+const password = document.getElementById('password');
 const create = document.getElementById('create');
 
 const download = (name) => {
@@ -71,6 +73,15 @@ const permissionVisualizer = (val, toBase8, onChange) => {
     });
     return visualizer;
 };
+
+usePassword.onchange = () => {
+    password.disabled = !usePassword.checked;
+    editor.password = usePassword.checked ? password.value : editor.password = null;
+};
+password.onchange = () => {
+    editor.password = password.value;
+};
+password.onkeydown = password.onchange;
 
 (async () => {
     await HSSP.init();

@@ -67,7 +67,9 @@
                 <button id="file-delete-no">No, don't delete the file</button><br>
                 <button id="file-delete-yes">Yes, delete the file</button><br>
             </dialog>
-            <br><button id="create">Create &amp; download!</button>
+            <br><label for="use-password">Encrypt content?</label> <input type="checkbox" id="use-password">
+            <br><label for="password">Password:</label> <input type="password" id="password" placeholder="Password" disabled>
+            <br><br><button id="create">Create &amp; download!</button>
             <br><br><br>
             This tool was built on top of the <a href="/docs/js/">official HSSP JavaScript API</a> for the web.
         </p>
