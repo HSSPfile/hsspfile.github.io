@@ -73,7 +73,7 @@ const permissionVisualizer = (val, toBase8, onChange) => {
         var pw = undefined;
         var pwincorrect = false;
         while (!pwcorrect) if (HSSP.metadata(package, pw).password.correct === false) {
-            pw = prompt(pwincorrect ? 'This password is not correct\n\nPassword:' : 'This package seems to be encrypted.\n\nPassword:');
+            pw = prompt(pwincorrect ? 'Password is not correct!\n\nPassword:' : 'This package seems to be encrypted.\n\nPassword:');
             if (pw === null) return;
             pwincorrect = true;
         } else pwcorrect = true;
