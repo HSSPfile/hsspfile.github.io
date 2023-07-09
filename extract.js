@@ -68,7 +68,9 @@ const permissionVisualizer = (val, toBase8, onChange) => {
     upload.onchange = async (ev) => {
         const package = await fileReadEventHandler(ev);
         editor.import(package);
-        editor.files.forEach(file => {
+        const files = editor.files;
+        Object.keys(files).forEach(fileName => {
+            const file = files[fileName];
             console.log(file);
             /*
             var el = document.createElement('tr');
