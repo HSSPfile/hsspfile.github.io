@@ -247,6 +247,7 @@ version.onkeydown = version.onchange;
                 URL.revokeObjectURL(url);
             });
         } catch (e) {
+            console.error(e);
             var errmsg = '';
             switch (e) {
                 case 'TOO_MUCH_FILES':
