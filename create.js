@@ -8,6 +8,7 @@ const password = document.getElementById('password');
 const compression = document.getElementById('compression');
 const compressionLvl = document.getElementById('compression-level');
 const compressionLvlNum = document.getElementById('compression-level-number');
+const downloadCount = document.getElementById('download-count');
 const create = document.getElementById('create');
 
 const download = (name) => {
@@ -210,25 +211,28 @@ compressionLvlNum.onkeydown = compressionLvlNum.onchange;
         editor.version = parseInt(version.value);
         compression.disabled = editor.version < 4;
 
-        const a = document.createElement('a');
-        a.download = window.location.href
-            .split(':').join('_')
-            .split('/').join('_')
-            .split('#').join('_')
-            .split('\\').join('_')
-            .split('*').join('_')
-            .split('.').join('_')
-            .split('?').join('_')
-            .split('"').join('_')
-            .split('\'').join('_')
-            .split('<').join('_')
-            .split('>').join('_')
-            .split('|').join('_') + '.hssp';
-        const blob = new Blob([editor.toBuffer()], { type: 'application/octet-stream' });
-        const url = URL.createObjectURL(blob);
-        a.href = url;
-        a.click();
-        URL.revokeObjectURL(url);
+        var out = (downloadCount.value > 1 && editor.version >= 4) ? editor.toBuffers(downloadCount.value) : [editor.toBuffer()];
+        out.forEach((buf) => {
+            const a = document.createElement('a');
+            a.download = window.location.href
+                .split(':').join('_')
+                .split('/').join('_')
+                .split('#').join('_')
+                .split('\\').join('_')
+                .split('*').join('_')
+                .split('.').join('_')
+                .split('?').join('_')
+                .split('"').join('_')
+                .split('\'').join('_')
+                .split('<').join('_')
+                .split('>').join('_')
+                .split('|').join('_') + '.hssp';
+            const blob = new Blob([buf], { type: 'application/octet-stream' });
+            const url = URL.createObjectURL(blob);
+            a.href = url;
+            a.click();
+            URL.revokeObjectURL(url);
+        });
 
         create.innerText = 'Create & download!';
         create.disabled = false;
