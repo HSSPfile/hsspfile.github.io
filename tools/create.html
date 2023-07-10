@@ -25,7 +25,14 @@
     <main class="markdown-body">
         <h2>Create package</h2>
         <p>
-            <b>Note: There is no gurantee that files above 50 MB will work in the browser version because your browser may kill the reading and/or packaging process due to using too much memory.</b><br>
+            <b>
+                Note: There is no gurantee that files above 50 MB will work in the browser version because 
+                your browser may kill the reading and/or packaging process due to using too much resources.
+                <br>
+                You should notice that if you take a look into the devtools or if the button cannot be used
+                anymore. In this case, please remove too large files and click <a href="javascript:create.click()">this link</a>.
+            </b><br>
+            If want to have support for much larger files, try out our <a href="javascript:alert('coming soon ;)')">desktop tool</a> (coming soon).<br><br>
             Add a file: <input type="file" id="upload"><br>
             Select a version: <select id="version">
                 <optgroup label="Supported versions">

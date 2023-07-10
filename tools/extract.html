@@ -25,7 +25,14 @@
     <main class="markdown-body">
         <h2>Extract package</h2>
         <p>
-            <b>Note: Split HSSP files are not supported yet.<br>There is also no gurantee that files above 50 MB will extract because your browser may kill the extraction process due to using too much memory.</b><br>
+            <b>
+                Note: There is no gurantee that files above 50 MB will work in the browser version because 
+                your browser may kill the reading and/or packaging process due to using too much resources.
+                <br>
+                You should notice that if you take a look into the devtools or if the button cannot be used
+                anymore. In this case, please reload the page and try it again with another file.
+            </b><br>
+            If want to have support for much larger files, try out our <a href="javascript:alert('coming soon ;)')">desktop tool</a> (coming soon).<br><br>
             Add a package: <input type="file" id="upload"><br>
             <table id="file-list">
                 <tr><th>Name</th><th>Path</th><th>Permissions</th><th></th></tr>
