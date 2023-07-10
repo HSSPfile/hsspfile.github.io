@@ -110,6 +110,18 @@ compressionLvlNum.onchange = () => {
 };
 compressionLvlNum.onkeydown = compressionLvlNum.onchange;
 
+version.onchange = () => {
+    editor.version = parseInt(version.value);
+
+    if (editor.version >= 4) {
+        downloadCount.max = undefined;
+    } else {
+        downloadCount.max = 1;
+        downloadCount.value = 1;
+    };
+};
+version.onkeydown = version.onchange;
+
 (async () => {
     await HSSP.init();
 
@@ -211,28 +223,42 @@ compressionLvlNum.onkeydown = compressionLvlNum.onchange;
         editor.version = parseInt(version.value);
         compression.disabled = editor.version < 4;
 
-        var out = (downloadCount.value > 1 && editor.version >= 4) ? editor.toBuffers(downloadCount.value) : [editor.toBuffer()];
-        out.forEach((buf) => {
-            const a = document.createElement('a');
-            a.download = window.location.href
-                .split(':').join('_')
-                .split('/').join('_')
-                .split('#').join('_')
-                .split('\\').join('_')
-                .split('*').join('_')
-                .split('.').join('_')
-                .split('?').join('_')
-                .split('"').join('_')
-                .split('\'').join('_')
-                .split('<').join('_')
-                .split('>').join('_')
-                .split('|').join('_') + '.hssp';
-            const blob = new Blob([buf], { type: 'application/octet-stream' });
-            const url = URL.createObjectURL(blob);
-            a.href = url;
-            a.click();
-            URL.revokeObjectURL(url);
-        });
+        try {
+            var out = (downloadCount.value > 1 && editor.version >= 4) ? editor.toBuffers(downloadCount.value) : [editor.toBuffer()];
+            out.forEach((buf) => {
+                const a = document.createElement('a');
+                a.download = window.location.href
+                    .split(':').join('_')
+                    .split('/').join('_')
+                    .split('#').join('_')
+                    .split('\\').join('_')
+                    .split('*').join('_')
+                    .split('.').join('_')
+                    .split('?').join('_')
+                    .split('"').join('_')
+                    .split('\'').join('_')
+                    .split('<').join('_')
+                    .split('>').join('_')
+                    .split('|').join('_') + '.hssp';
+                const blob = new Blob([buf], { type: 'application/octet-stream' });
+                const url = URL.createObjectURL(blob);
+                a.href = url;
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+        } catch (e) {
+            var errmsg = '';
+            switch (e) {
+                case 'TOO_MUCH_FILES':
+                    errmsg = 'We cannot generate more files than bytes.\nPlease reduce the amount of files being generated.';
+                    break;
+            
+                default:
+                    errmsg = 'Unknown error type: ' + e;
+                    break;
+            }
+            alert('An error occurred:\n\n' + errmsg);
+        };
 
         create.innerText = 'Create & download!';
         create.disabled = false;
